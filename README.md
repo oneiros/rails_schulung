@@ -1,0 +1,5 @@
+# rails_schulung
+
+This is a slide deck for use with zlide.
+
+See https://github.com/oneiros/zlide to learn more.
