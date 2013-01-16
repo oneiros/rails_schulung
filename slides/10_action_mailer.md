@@ -9,7 +9,7 @@
 -   Üblicherweise in config/environemnts/
 -   Delivery-Methods :smtp, :sendmail, :test, :file
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 config.action_mailer.delivery_method = :smtp
 config.action_mailer.smtp_settings = {
   :address => "mail.example.com",
@@ -25,7 +25,7 @@ config.action_mailer.smtp_settings = {
 
 ## Mailer analog zu Controller
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 class Notifier < ActionMailer::Base
   default :from => "noreply@mydomain.com"
 
@@ -41,7 +41,7 @@ end
 
 ## Mails senden
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 class Project < ActiveRecord::Base
   after_create :notify_admin
 

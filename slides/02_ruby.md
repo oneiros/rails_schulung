@@ -6,9 +6,9 @@
 
 ## Installation
 
-1.  RVM [rvm.beginrescueend.com](http://rvm.beginrescueend.com)
+1.  RVM - The Ruby Version Manager ([rvm.io](http://rvm.io)) oder alternativ rbenv/ruby-build
 2.  Ruby 1.9.3
-3.  Rails 3.2.6
+3.  Rails 3.2.11
 
 !SLIDE
 
@@ -23,7 +23,7 @@
 
 ## Hello World
 
-~~~~ {.brush: .ruby style="font-size: 12px;"}
+~~~~ruby
 #!/usr/bin/env ruby
 
 puts "Hello World"
@@ -62,7 +62,7 @@ puts "Hello World"
 
 -   Eine pro Zeile
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 puts "eins"
 puts "zwei"
 puts "drei"
@@ -70,7 +70,7 @@ puts "drei"
 
 -   Oder getrennt durch Semikolon
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 puts "eins" ; puts "zwei" ; puts "drei"
 ~~~~
 
@@ -80,7 +80,7 @@ puts "eins" ; puts "zwei" ; puts "drei"
 
 ## Variablen und Ausdrücke
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 a = 3 # 3
 a = b = 4 # 4
 a, b = 5, 6 # [5, 6]
@@ -98,14 +98,14 @@ $global_variable = "meh"
 
 -   Objekte haben Methoden
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 5.to_s # "5"
 "test".length # 4
 ~~~~
 
 -   Methoden definieren
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 def my_method(param1)
   puts param1.to_s
 end
@@ -132,7 +132,7 @@ end
 
 -   Sortierte Liste von Werten
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 a = [1, 2, 5, 6]
 a[0] # 1
 a = ["hello", 1, 3.8, :name]
@@ -145,9 +145,9 @@ a.map {|e| e * 2 }
 
 ## Hashes
 
--   Schlüssel/Wert-Paare
+*   Schlüssel/Wert-Paare
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 h = {
   :name => "Otto", 
   :strasse => "Musterstr. 22", 
@@ -156,11 +156,13 @@ h = {
 h[:name] # "Otto"
 ~~~~
 
+* Alternative Syntax seit Ruby 1.9
+
 !SLIDE
 
 ## Operatoren
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 5 + 1 # 6
 5 / 2 # 2
 5.0 / 2 # 2.5
@@ -174,7 +176,7 @@ true || false # true
 
 ## Fallentscheidungen 1
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 if a > 0
   puts "positiv"
 elsif a < 0
@@ -190,7 +192,7 @@ puts "positiv" unless a <= 0
 
 ## Fallentscheidungen 2
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 case a
 when 0
   puts "null"
@@ -209,7 +211,7 @@ end
 
 -   Im Wesentlichen nur while:
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 while (a > 0)
   a -= 1
   puts "Countdown: #{a}"
@@ -222,7 +224,7 @@ end
 
 ## Code Blocks
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 5.times do
   puts "hello"
   puts "world"
@@ -235,7 +237,7 @@ end
 
 ## Iteratoren
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 a = [1, 2, 3]
 a.each {|e| puts e}
 for element in a do
@@ -249,7 +251,7 @@ h.each {|key, value| puts "#{key}: #{value}"
 
 ## Reguläre Ausdrücke
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 puts "found" if a =~ /[Hh]ello [Ww]orld/
 r = /^\s*Hello World$/
 puts "found" if a =~ r
@@ -259,7 +261,7 @@ puts "found" if a =~ r
 
 ## Klassen und Objekte
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 class Test
 end
 
@@ -270,7 +272,7 @@ t = Test.new
 
 ## Methoden
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 class Test
   def self.hello
     puts "hello"
@@ -290,7 +292,7 @@ end
 
 ## Defaultparameter
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 def greet(name, greeting = "hello")
   "#{greeting} #{name}"
 end
@@ -303,7 +305,7 @@ greet("Otto", "hallo") # "hallo Otto"
 
 ## Beliebige Anzahl Parameter
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 def greet_all(*args)
   args.map do |arg|
     greet(arg)
@@ -331,7 +333,7 @@ greet_all("Otto", "Peter", "Karl")
 -   Direkter Zugriff von außen nicht möglich
 -   Getter/Setter
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 class Test
   def test
     @test
@@ -346,7 +348,7 @@ end
 
 ## Kurzform
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 class Test
   attr_accessor :test
   attr_reader :read_only
@@ -358,7 +360,7 @@ end
 
 ## Vererbung
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 class Rechteck
   def initialize(width, height)
     @width = width ; @height = height
@@ -376,7 +378,7 @@ end
 
 ## Zugriffsschutz
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 class Test
   def public_method ; end
   
@@ -394,7 +396,7 @@ end
 
 ## Exceptions
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 def erroneous
   raise "Oops"
 end
@@ -412,7 +414,7 @@ end
 
 ## Module 1: Namespaces
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 module NameSpace
   CONST = "hello"
   class Test
@@ -427,7 +429,7 @@ t = NameSpace::Test.new
 
 ## Module 2: Mixins
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 module Mix
   def greeting ; "hello world" ; end
 end

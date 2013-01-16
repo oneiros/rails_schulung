@@ -7,8 +7,7 @@
 ## JS in RoR
 
 -   Früher enge Integration mit prototype
--   Seit Rails 3 lose Kopplung (Unobtrusive JavaScript) und jQuery als
-    Default
+-   Seit Rails 3 lose Kopplung (Unobtrusive JavaScript) und jQuery als Default
 -   CoffeeScript als "Empfehlung", um JS zu schreiben
 
 !SLIDE
@@ -24,7 +23,7 @@
 
 ## AJAX-Links und Formulare
 
-~~~~ {.brush: .ruby; .html-script: .true}
+~~~~ruby
 <%= form_for @comment, :remote => true do |f| %>
   ...
 <% end %>
@@ -36,7 +35,7 @@
 
 ## AJAX-Anfrage im Controller
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 class ToDosController
 
   def mark_as_done
@@ -55,8 +54,7 @@ end
 
 ## AJAX-Antwort
 
--   Um die Seite in Abhängigkeit von der Antwort zu aktualisieren sollte
-    eine AJAX-Anfrage JavaScript zurückliefern
+-   Um die Seite in Abhängigkeit von der Antwort zu aktualisieren sollte eine AJAX-Anfrage JavaScript zurückliefern
 -   Dieses wird im Client sofort ausgeführt
 -   "Vanilla" JavaScript kann mit ERb gerendert werden
 -   Alternativ: CoffeeScript
@@ -80,7 +78,7 @@ end
 -   Backbone, Spine, Ember, Knockout usw.
 -   Server tauscht nur noch JSON mit Browser aus
 -   Vorteil: API inklusive
--   Rails gute Wahl, aber evtl. oversized
+-   Rails gute Wahl, aber evtl. oversized (siehe Rails-API-Projekt)
 
 !SLIDE
 
@@ -92,5 +90,5 @@ end
 
 -   Ticket auf Knopfdruck erledigen
 -   Tags/Labels auf Knopfdruck entfernen
--   Optional: Tags/Lables dynamisch erstellen
+-   Optional: Tags/Labels dynamisch erstellen
 

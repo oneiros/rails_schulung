@@ -1,6 +1,6 @@
 !SLIDE
 
-# Webentwicklung mit Ruby on Rails2
+# Webentwicklung mit Ruby on Rails
 
 Linuxhotel, Juli 2012
 
@@ -25,7 +25,7 @@ David Roetzel <training@roetzel.de\>
 -   2 Blöcke a 4h mit jeweils einer Pause
 -   Theorie/Praxis gemischt
 -   Bitte viel fragen!
--   Schulungsnotebooks mit Debian GNU/Linux
+-   Schulungsnotebooks mit Ubuntu Linux
 -   Texteditor Eurer Wahl
 
 !SLIDE

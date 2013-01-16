@@ -31,7 +31,7 @@
 
 ## Migrations: Operationen
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 create_table :projects {|t| ; }
 drop_table :projects
 rename_table :projects, :projekte
@@ -49,10 +49,9 @@ remove_index :posts, :project_id
 
 ## Migrations: Operationen contd.
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 create_table :posts do |t|
   t.references :project
-  t.index :project_id
   t.timestamps
 end
 
@@ -63,7 +62,7 @@ execute("UPDATE projects SET name = 'test'")
 
 ## Migrations: Rollback ermöglichen
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 class TestMigration < ActiveRecord::Migration
   def change
     add_column :posts, :test, :string
@@ -130,7 +129,7 @@ end
 
 ## Nested Attributes
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 class Post < ActiveRecord::Base
   has_many :comments
 
@@ -142,11 +141,11 @@ end
 
 ## Eigene Validations
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 class Post < ActiveRecord::Base
   validate :subject_not_unknown
 
-  protected
+  private
 
   def subject_not_unknown
     if self.subject =~ /unknown/i
@@ -169,13 +168,14 @@ end
 
 ## Callbacks
 
--   Eingreifen in den "Lebenszyklus" eines AR-Objekts
--   before\_validation(\_on\_create)
--   after\_validation(\_on\_create)
+-   Eingreifen in den "Lebenszyklus" eines AR-Objekts, z.B.:
+-   before\_validation
+-   after\_validation
 -   before\_save
 -   after\_save
 -   before\_create
 -   after\_create
+-   Achtung: Transaktionen!
 
 !SLIDE
 
@@ -207,7 +207,7 @@ end
 
 ## Komplexe Abfragen
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 Post.where(:subject => "test")
 project.posts.where(:subject => "test")
 
@@ -222,7 +222,7 @@ Project.joins(:posts).where(
 
 ## Komplexe Abfragen (Rails 2)
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 Post.find(:all, :conditions => {:title => "test"})
 
 Post.find(:all, :order => "created_at ASC")
@@ -232,18 +232,12 @@ Post.find(:all, :order => "created_at ASC")
 
 ## Komplexe Abfragen 2
 
-~~~~ {.brush: .ruby}
-!SLIDE
-
+~~~~ruby
 # Sicheres Einbetten von Argumenten
 Post.where(["subject = ?", "test"])
 
-!SLIDE
-
 # Eager Loading
 Project.includes(:posts).all
-
-!SLIDE
 
 # SQL verwenden
 Project.find_by_sql("SELECT * FROM projects")
@@ -253,13 +247,13 @@ Project.find_by_sql("SELECT * FROM projects")
 
 ## Scopes
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 class ToDo < ActiveRecord::Base
   belongs_to :user
 
   default_scope order(:created_at)
-  scope :open, where(:done => false)
-  scope :done, where(:done => false)
+  scope :unfinished, where(:done => false)
+  scope :done, where(:done => true)
   scope :newer_than, lambda { |time|
     where(arel_table[:created_at].gt(time))
   }
@@ -274,13 +268,13 @@ end
 -   Initialer Datenbestand
 -   Stammdaten aller Art, z.B. Benutzer, Rollen, Kategorien usw.
 -   Datei db/seeds.rb
--   rake db:seeds
+-   rake db:seed
 
 !SLIDE
 
 ## Transaktionen
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 ActiveRecord::Base.transaction do
   project = Project.create!(:title => "test")
   post = Post.create!(

@@ -6,8 +6,8 @@
 
 ## In a Nutshell
 
--   Definierter Ort und Preprozessor für Assets
--   Assets = Bilder, JavaScripts und Stylesheets
+-   Definierter Ort und Präprozessor für Assets
+-   Assets = Bilder, JavaScript und Stylesheets
 -   Preprocessing mit Sprockets
 -   SCSS und ERb für CSS
 -   CoffeeScript und ERb für JavaScript
@@ -24,7 +24,7 @@
 
 ## Abhängigkeiten definieren
 
-~~~~ {.brush: .js}
+~~~~javascript
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
@@ -42,7 +42,7 @@
 
 ## SCSS
 
-~~~~ {.brush: .css}
+~~~~css
 $mycolor = #ff34a2;
 
 .flash {

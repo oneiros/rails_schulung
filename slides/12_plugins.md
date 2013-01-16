@@ -7,13 +7,9 @@
 ## Rails erweitern
 
 -   gems vs. plugins
--   Rails 3 Kompatibilität: [railsplugins.org](http://railsplugins.org)
--   Plugin-Seiten:
-    [agilewebdevelopment.com/plugins](http://agilewebdevelopment.com/plugins)
-    [railslodge.com](http://railslodge.com)
+-   [ruby-toolbox.com](http://www.ruby-toolbox.com) 
 -   Aber auch: [github.com](http://www.github.com)
-    [rubygems.org](http://rubygems.org)
-    [ruby-toolbox.com](http://www.ruby-toolbox.com)
+-   [rubygems.org](http://rubygems.org)
 
 !SLIDE
 
@@ -21,14 +17,14 @@
 
 -   Handling von Datei-Uploads
 -   Dateiablage im Dateisystem oder bei Amazon's S3
--   Automatisches Skalieren von Bildern, Erstellen von Thumbnails
+-   Automatisches Skalieren von Bildern, Erstellen von Thumbnails mit Hilfe von imagemagick
 -   gem 'paperclip'
 
 !SLIDE
 
 ## Paperclip Beispiel: Model
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 class User < ActiveRecord::Base
   has_attached_file :avatar,
     :styles => {
@@ -51,22 +47,22 @@ end
 
 !SLIDE
 
-## Formtastic
+## simple_form
 
 -   Smarter Ersatz für eingebaute Form-Helper
 -   Sinnvolle defaults
--   Generiert ausführliches, semantisches Markup
--   gem 'formtastic'
--   Alternative: simple\_form
+-   Generiertes Markup stark konfigurierbar
+-   gem 'simple_form'
 
 !SLIDE
 
-## Formtastic Beispiel
+## simple_form Beispiel
 
-~~~~ {.brush: .ruby; .html-script: .true;}
-<%= semantic_form_for @to_do do |f| %>
-  <%= f.inputs %>
-  <%= f.buttons %>
+~~~~ruby
+<%= simple_form_for @to_do do |f| %>
+  <%= f.input :title %>
+  <%= f.input :done %>
+  <%= f.button :submit %>
 <% end %>
 ~~~~
 
@@ -86,13 +82,13 @@ end
 -   Pagination für Listenansichten o.ä.
 -   Im Controller:
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 @posts = Post.paginate :page => params[:page]
 ~~~~
 
 -   In der View
 
-~~~~ {.brush: .ruby; .html-script: .true;}
+~~~~ruby
 <%= will_paginate @posts %>
 ~~~~
 
@@ -100,9 +96,10 @@ end
 
 ## Weitere Plugins
 
--   authlogic und devise
+-   devise und omniauth
 -   cancan
 -   userstamp
+-   simple-navigation
 -   paper\_trail
 -   cocoon und nested\_forms
 -   Zusätzlich: Rack-Middleware

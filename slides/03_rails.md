@@ -261,7 +261,7 @@ class Project
 end
 class Post
   validates_presence_of :subject, :body
-  validates_length_of :subject, :greater_than => 10
+  validates_length_of :subject, :minimum => 10
 end
 ~~~~
 
@@ -278,8 +278,6 @@ end
 !SLIDE
 
 ## API-Dokumentation
-
-!SLIDE
 
 ### [api.rubyonrails.org](http://api.rubyonrails.org)
 

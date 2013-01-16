@@ -11,7 +11,7 @@
     reproduzierbaren Ergebnissen
 -   Test first: Test als Spezifikation
 -   Verträgt sich besonders gut mit OO
--   Test Suite mit einzelnen TestCases
+-   Test Suite mit einzelnen Test Cases
 -   Assertions formulieren Annahmen
 -   Fest eingebaut in Rails
 
@@ -78,17 +78,19 @@
 
 !SLIDE
 
-## Mock Objects
+## Mocks und Stubs
 
--   Stubs, um Seiteneffekte bei der Ausführung von Tests zu verhindern
--   Models und Controller können ersetzt werden
--   Dazu gleichnamige Datei in test/mocks/ ablegen
+* Ungewünschte Seiteneffekte bei der Ausführung von Tests verhindern
+* Z.B. keine Anfragen an externe Dienste
+* Geschwindigkeitsvorteil
+* Entkopplung von Komponenten beim Testen (wichtig für TDD)
+* Mocking-Bibliotheken wie z.B. mocha
 
 !SLIDE
 
 ## Unit Tests
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 class PostTest < ActiveSupport::TestCase
   setup do
     @post = Post.new
@@ -105,7 +107,7 @@ end
 
 ## Functional Tests
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 class PostsControllerTest < ActionController::TestCase
 
   test "should get index" do
@@ -121,7 +123,7 @@ end
 
 ## Rails Assertions
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 assert_valid post
 
 assert_response 200
@@ -133,9 +135,6 @@ assert_template "posts/index.html.erb"
 assert_difference "Post.count" do
   Post.create(:subject => "test")
 end
-
-!SLIDE
-
 # ...
 ~~~~
 
@@ -143,7 +142,7 @@ end
 
 ## Integration Tests
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 class CreationTest < ActionDispatch::IntegrationTest
   test "can create a project and a post" do
     assert_difference "Project.count" do
@@ -172,7 +171,7 @@ end
 -   gem 'simplecov', :require =\> false, :group =\> :test
 -   In tests/test\_helper.rb
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 require 'simplecov'
 SimpleCov.start 'rails'
 ~~~~
@@ -215,7 +214,7 @@ SimpleCov.start 'rails'
 
 ## Ticketsystem testen
 
--   Personen erweitern: Verhältnis offene/geschlossene Tickets berechnen
+-   Personen erweitern: Anzahl offener/geschlossener Tickets berechnen
 -   Personen und Tickets: Methode to\_s überschreiben
 -   Fixtures für Personen und Tickets anlegen
 -   Tests schreiben

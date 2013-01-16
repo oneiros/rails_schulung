@@ -6,7 +6,7 @@
 
 ## Resource Routing
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 resource :session
 resources :projects do
   resources :posts
@@ -22,11 +22,12 @@ end
 
 ## Named Routes
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 match "/show_post/:id" => "posts#show",
   :as => "show_post"
 
 # show_post_path(:id => 5) => /show_post/5
+
 ~~~~
 
 !SLIDE
@@ -37,14 +38,13 @@ match "/show_post/:id" => "posts#show",
 -   Durch expliziten Aufruf von render kann dieses Verhalten geändet
     werden
 -   Alterniv: redirect\_to löst einen Browser-Redirect aus
--   Achtung: render und redirect\_to brechen die Bearbeitung nicht ab -
-    explizites return!
+-   Achtung: render und redirect\_to brechen die Bearbeitung nicht ab - explizites return bei komplexen Verzweigungen!
 
 !SLIDE
 
 ## Was kann man rendern?
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 render :action => "new"
 render :template => "projects/new"
 render :partial => "form"
@@ -59,10 +59,8 @@ render :xml => project
 
 ## Request und Response
 
--   request enthält alle wichtigen Informationen zur Anfrage, z.B. URL
-    und Header
--   headers-Hash ermöglicht setzen von zusätzlichen Headern in der
-    Antwort
+-   request enthält alle wichtigen Informationen zur Anfrage, z.B. URL und Header
+-   headers-Hash ermöglicht setzen von zusätzlichen Headern in der Antwort
 
 !SLIDE
 
@@ -70,7 +68,7 @@ render :xml => project
 
 -   Unterscheidung anhand Endung oder Header mit Hilfe von respond\_to:
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 respond_to do |format|
   format.html
   format.xml { render :xml => @post }
@@ -106,7 +104,7 @@ end
 
 ## Beispiel-Filter
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 class PostsController < ApplicationController
 
   before_filter :load_project
@@ -124,12 +122,10 @@ end
 ## Flash
 
 -   Hash für Rückmeldungen an den Benutzer
--   Gespeichert in der Session, so dass sie bei redirect\_to erhalten
-    bleiben
+-   Gespeichert in der Session, so dass sie bei redirect\_to erhalten bleiben
 -   Bsp: redirect\_to @project, :notice =\> "Successfully created."
 -   Alternativ: Direkter Zugriff auf den Hash
--   Beliebige Schlüssel um verschiedene Arten von Nachrichten zu
-    unterscheiden
+-   Beliebige Schlüssel um verschiedene Arten von Nachrichten zu unterscheiden
 
 !SLIDE
 
@@ -138,8 +134,7 @@ end
 -   ActionController ist sehr modular aufgebaut
 -   Mit allen Features ist er recht groß und (vergleichsweise) behäbig
 -   Manchmal benötigt man nicht alle Features, aber mehr Performance
--   Controller von ActionController::Metal ableiten, Funktionalität
-    gezielt includen
+-   Controller von ActionController::Metal ableiten, Funktionalität gezielt includen
 
 !SLIDE
 
@@ -150,8 +145,7 @@ end
 ## Dashboard
 
 -   Neuen Controller erstellen
--   Dashboard soll analog zur Liste aller Tickets nur die offenen
-    Tickets anzeigen.
+-   Dashboard soll analog zur Liste aller Tickets nur die offenen Tickets anzeigen.
 -   Dashboard soll Startseite werden
 -   Testen!
 

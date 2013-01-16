@@ -6,7 +6,7 @@
 
 ## Layouts
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 class PostsController < ApplicationController
   layout "my_layout"
 
@@ -20,7 +20,7 @@ end
 
 ## Partials
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 # Lange Form
 render :partial => "form",
   :locals => {:f => form_builder}
@@ -37,12 +37,13 @@ render "form", :f => form_builder
 -   Eigene können in Modulen in app/helpers/ implementiert werden
 -   Ein Helper-Modul pro Controller
 -   Zentraler Helper ApplicationHelper
+-   Controller-Methoden können zu Helpern werden mit Hilfe von helper_method
 
 !SLIDE
 
 ## Nützliche Helfer
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 link_to "Edit", edit_project_path(@project)
 link_to "Delete", @post,
   :confirm => "Are you sure?"
@@ -57,7 +58,7 @@ cycle("even", "odd")
 
 ## Formulare
 
-~~~~ {.brush: .ruby; .html-script: .true}
+~~~~ruby
 <%= form_for @post do |f| %>
   <%= f.text_field :subject %>
   <%= f.submit %>
@@ -73,7 +74,7 @@ cycle("even", "odd")
 
 ## Beziehungen mit select
 
-~~~~ {.brush: .ruby; .html-script: .true}
+~~~~ruby
 <%= form_for @to_do do |f| %>
   <%= f.collection_select :user_id, 
         User.all, :id, :name 
@@ -86,11 +87,11 @@ cycle("even", "odd")
 
 ## Nested Attributes 2
 
-~~~~ {.brush: .ruby; .html-script: .true}
-<%= form_for @post do |f| %>
+~~~~ruby
+<%= form_for @user do |f| %>
   ...
-  <%= f.fields_for :comments do |cf| %>
-    <%= cf.text_area :body %>
+  <%= f.fields_for :phone_numbers do |cf| %>
+    <%= cf.text_field :number %>
   <% end %>
 <% end %>
 ~~~~
@@ -99,7 +100,7 @@ cycle("even", "odd")
 
 ## XML Templates mit Builder
 
-~~~~ {.brush: .ruby}
+~~~~ruby
 xml.instruct!
 xml.project do
   xml.name(@project.name)
@@ -134,6 +135,7 @@ end
 -   "Fette" Klassen mit Hilfe von Modules entzerren
 -   Eine Aufgabe (Concern) pro Module
 -   ActiveSupport::Concern als Starthilfe
+-   Alternativ: Klassische OO-Methoden
 
 !SLIDE
 
