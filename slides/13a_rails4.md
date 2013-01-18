@@ -1,6 +1,6 @@
 !SLIDE
 
-# Aublick auf Rails 4
+# Ausblick auf Rails 4
 
 !SLIDE
 
