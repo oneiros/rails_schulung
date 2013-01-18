@@ -108,7 +108,7 @@ end
 
 ## Plugins selber schreiben
 
--   rails plugin new <name\>
+-   rails plugin new &lt;name&gt;
 -   Verschiedene Varianten (kombinierbar):
     -   Reine Bibliothek
     -   Dynamisches Erweitern vorhandener Funktionalität

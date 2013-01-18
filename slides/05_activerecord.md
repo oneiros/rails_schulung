@@ -16,16 +16,24 @@
 
 !SLIDE
 
-## Migrations: Datentypen
+## Migrations: Datentypen 1
 
-  ----------- ------------
-  :string     :text
-  :integer    :float
-  :decimal    :boolean
-  :datetime   :timestamp
-  :time       :date
-  :binary     
-  ----------- ------------
+* :string
+* :text
+* :integer    
+* :float
+* :decimal    
+* :boolean
+
+!SLIDE
+
+## Migrations: Datentypen 2
+
+* :date
+* :time
+* :datetime
+* :timestamp
+* :binary
 
 !SLIDE
 
@@ -188,6 +196,7 @@ end
     Formular verwendet werden
 -   Positivliste mit attr\_accessible
 -   Negativliste mit attr\_protected
+-   In Rails 4: strong_parameters
 
 !SLIDE
 

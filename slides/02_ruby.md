@@ -447,7 +447,7 @@ t.greeting # "hello world"
 
 -   Paketverwaltung für Ruby-Programme und -Bibliotheken
 -   CLI ähnlich apt-get, yum etc.
--   gem install <paketname\>
+-   gem install &lt;paketname&gt;
 -   [www.rubygems.org](http://www.rubygems.org)
 -   require
 

@@ -154,10 +154,19 @@ rails new <projekt>
 -   Generiert Codegerüste
 -   Kurz: rails g
 -   Beispiele
-    -   rails generate model <name\>
-    -   rails generate controller <name\>
+    -   rails generate model &lt;name&gt;
+    -   rails generate controller &lt;name&gt;
 -   rails destroy zum Rückhängigmachen
--   (Etwas) mehr als ein Gerüst: rails g scaffold
+
+!SLIDE
+
+## Models
+
+-   Erben jede Menge Verhalten von ActiveRecord::Base
+-   Keine Konfiguration, wenn man Konventionen folgt
+-   Datenbanktabelle "projects" &lt;=&gt; Model-Klasse "Project"
+-   Deklarative Definition von Beziehungen und Validierungen
+-   rails g model &lt;name&gt; &lt;attribut&gt;:&lt;datentyp&gt; ...
 
 !SLIDE
 
@@ -170,6 +179,41 @@ rails new <projekt>
     Umgebungen
 -   Möglichkeit eines Rollbacks
 -   rake db:migrate
+
+!SLIDE
+
+## CRUD
+
+~~~~ruby
+params = {:title => "MyProject"}
+
+# Create
+Project.create(params)
+p = Project.new(params) ; p.save # true
+
+# Read
+p = Project.find(1)
+p = Project.find_by_title("MyProject")
+p = Project.all
+
+# Update
+p.update_attributes(:title => "NewTitle") # true
+
+# Delete
+p.destroy
+~~~~
+
+!SLIDE
+
+## Views
+
+-   ERb-HTML-Templates
+-   Hierarchie aus Layout, Template und Partial(s)
+-   Spezielle Tags &lt;% %&gt; erlauben Ausführen von Ruby-Code
+-   &lt;%= "hallo" %&gt; erlaubt das Einbetten von Werten in das Dokument
+-   Volle Ruby-Möglichkeiten - erfordert Disziplin!
+-   Helper für Formulare, Text und vieles mehr
+-   Werden nach den zugehörigen Controllern strukturiert: rails g controller &lt;name&gt;
 
 !SLIDE
 
@@ -198,46 +242,13 @@ rails new <projekt>
 
 !SLIDE
 
-## Views
+## Scaffolding
 
--   ERb-HTML-Templates
--   Hierarchie aus Layout, Template und Partial(s)
--   Spezielle Tags <% %\> erlauben Ausführen von Ruby-Code
--   <%= "hallo" %\> erlaubt das Einbetten von Werten in das Dokument
--   Volle Ruby-Möglichkeiten - erfordert Disziplin!
--   Helper für Formulare, Text und vieles mehr
-
-!SLIDE
-
-## Models
-
--   Erben jede Menge Verhalten von ActiveRecord::Base
--   Keine Konfiguration, wenn man Konventionen folgt
--   Datenbanktabelle "projects" <=\> Model-Klasse "Project"
--   Deklarative Definition von Beziehungen und Validierungen
-
-!SLIDE
-
-## CRUD
-
-~~~~ruby
-params = {:title => "MyProject"}
-
-# Create
-Project.create(params)
-p = Project.new(params) ; p.save # true
-
-# Read
-p = Project.find(1)
-p = Project.find_by_title("MyProject")
-p = Project.all
-
-# Update
-p.update_attributes(:title => "NewTitle") # true
-
-# Delete
-p.destroy
-~~~~
+* rails g scaffold &lt;name&gt; &lt;attribute&gt; ...
+* Generiert Model, Views und Controller
+* HTML-Views + JSON-API
+* Guter Startpunkt, aber passt es auch wirklich?
+* Code verstehen und Zeitersparnis hinterfragen
 
 !SLIDE
 
@@ -271,8 +282,7 @@ end
 
 -   logger-Objekt mit Methoden für verschiedene Loglevel
 -   Loglevel: debug, info, warn, error, fatal
--   Pro Umgebung kann konfiguriert werden, ab welchem Level tatsächlich
-    geloggt wird
+-   Pro Umgebung kann konfiguriert werden, ab welchem Level tatsächlich geloggt wird
 -   Logdateien in log/ benannt nach Umgebung
 
 !SLIDE
@@ -290,10 +300,9 @@ end
 ## Ticketsystem
 
 -   Ziel: Ticketsystem zum Erfassen und Bearbeiten von Vorfällen
--   Erster Schritt: Scaffold für Tickets und Personen
+-   Erster Schritt: MVC für Tickets und Personen
 -   Ticket hat mindestens Betreff, Status und Beschreibungstext
 -   Personen haben mindestens Vor- und Nachnamen, sowie E-Mailadresse
 -   Alle vorgenannten Daten sind Pflichtangaben
--   Ein Ticket gehört eindeutig einer Person - eine Person kann viele
-    Tickets haben
+-   Ein Ticket gehört eindeutig einer Person - eine Person kann viele Tickets haben
 

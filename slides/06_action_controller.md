@@ -129,6 +129,31 @@ end
 
 !SLIDE
 
+## strong_parameters
+
+* Rails 4 Feature, das als Gem auch schon in Rails 3 verwendet werden kann
+* gem 'strong\_parameters'
+* Verlagert die Verantwortung des Parameterfilterns vom Model in den Controller
+* Das ist prima, wenn z.B. erlaubte Parameter vom angemeldeten Benutzer abhängen
+
+!SLIDE
+
+## strong_parameters Beispiel
+
+~~~~ruby
+class PostsController < ApplicationController
+  def create
+    @post = Post.new(post_params)
+    # ...
+  private
+  def post_params
+    params.require(:post).permit(:subject, :body)
+  end
+end
+~~~~
+
+!SLIDE
+
 ## The Bare Metal
 
 -   ActionController ist sehr modular aufgebaut

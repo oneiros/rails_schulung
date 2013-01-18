@@ -168,7 +168,7 @@ end
 -   Lücken bei der Coverage sind offensichtliche Schwächen der Test
     Suite
 -   Perfekte Coverage bedeutet leider nicht, dass die Tests gut sind
--   gem 'simplecov', :require =\> false, :group =\> :test
+-   gem 'simplecov', :require =&gt; false, :group =&gt; :test
 -   In tests/test\_helper.rb
 
 ~~~~ruby

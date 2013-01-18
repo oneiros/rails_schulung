@@ -2,9 +2,8 @@
 
 # Webentwicklung mit Ruby on Rails
 
-Linuxhotel, Juli 2012
-
-David Roetzel <training@roetzel.de\>
+Linuxhotel, Januar 2013  
+David Roetzel <training@roetzel.de>
 
 !SLIDE
 
