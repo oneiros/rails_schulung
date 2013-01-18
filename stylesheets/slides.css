@@ -9,3 +9,11 @@
  * themes. Feel free to add and/or change to your liking.
  *
  */
+
+.slide h1 + p {
+  position: absolute;
+  bottom: 10%;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
